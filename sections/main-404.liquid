@@ -1,6 +1,18 @@
 
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+{% liquid
+  assign localized_root = routes.root_url | default: '/'
+%}
+
+{% if request.path == '/' or request.path == blank %}
+  {% if localized_root != '/' %}
+    <script>
+      window.location.replace({{ localized_root | json }});
+    </script>
+  {% endif %}
+{% endif %}
+
 <div
   class="
     section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}
