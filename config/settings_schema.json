@@ -366,13 +366,13 @@
       {
         "type": "font_picker",
         "id": "type_heading_font",
-        "default": "cormorant_garamond_n4",
+        "default": "geist_n5",
         "label": "t:options.heading"
       },
       {
         "type": "font_picker",
         "id": "type_accent_font",
-        "default": "cormorant_garamond_n4",
+        "default": "geist_n5",
         "label": "t:options.accent"
       },
       {
