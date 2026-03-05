@@ -1,0 +1,37 @@
+{%- doc -%}
+  Free-shipping progress bar.
+  Uses a threshold from section/theme settings (in the shop's currency, as cents).
+
+  @param {number} threshold - Shipping threshold in cents (e.g. 5000 = €50). Falls back to 5000.
+  @param {string} [class] - Additional CSS class.
+{%- enddoc -%}
+
+{%- liquid
+  assign threshold = threshold | default: 5000 | times: 1
+  assign cart_total = cart.total_price
+  assign remaining = threshold | minus: cart_total
+  if remaining < 0
+    assign remaining = 0
+  endif
+  assign progress = cart_total | times: 100 | divided_by: threshold
+  if progress > 100
+    assign progress = 100
+  endif
+  assign is_complete = false
+  if cart_total >= threshold
+    assign is_complete = true
+  endif
+-%}
+
+<div class="ol-shipping-bar{% if is_complete %} ol-shipping-bar--complete{% endif %}{% if class %} {{ class }}{% endif %}" aria-live="polite">
+  <p class="ol-shipping-bar__text">
+    {%- if is_complete -%}
+      🎉 You've unlocked <strong>free shipping!</strong>
+    {%- else -%}
+      Add <strong>{{ remaining | money }}</strong> more for <strong>free shipping</strong>
+    {%- endif -%}
+  </p>
+  <div class="ol-shipping-bar__track" role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">
+    <div class="ol-shipping-bar__fill" style="width: {{ progress }}%"></div>
+  </div>
+</div>

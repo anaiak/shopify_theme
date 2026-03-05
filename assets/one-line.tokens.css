@@ -1,0 +1,358 @@
+/* ==========================================================================
+   ONE-LINE ART — Design Tokens
+   Premium minimalist poster brand overlay for Fabric theme.
+   ========================================================================== */
+
+:root {
+  /* Brand palette */
+  --ol-bg: #F6F1E8;
+  --ol-bg-rgb: 246 241 232;
+  --ol-text: #111111;
+  --ol-text-rgb: 17 17 17;
+  --ol-accent: #2A2A2A;
+  --ol-muted: #6B6B6B;
+  --ol-border: #E0DAD0;
+  --ol-success: #3A7D44;
+  --ol-highlight: #D4C9B5;
+
+  /* Trust / CRO */
+  --ol-trust-bg: #F0EBE1;
+  --ol-badge-bg: #EDEDED;
+
+  /* Shipping threshold (in cents — 5000 = €50) */
+  --ol-free-shipping-threshold: 5000;
+
+  /* Paper grain background */
+  --ol-paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Paper background on body */
+body {
+  background-color: var(--ol-bg);
+  background-image: var(--ol-paper-grain);
+  background-attachment: fixed;
+}
+
+/* ---- Value Props Section ---- */
+.ol-value-props {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.ol-value-prop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ol-value-prop__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--ol-accent);
+}
+
+.ol-value-prop__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ol-value-prop__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ol-text);
+  margin: 0;
+}
+
+.ol-value-prop__desc {
+  font-size: 0.8125rem;
+  color: var(--ol-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ---- Trust Badges ---- */
+.ol-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 0 0;
+}
+
+.ol-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: var(--ol-muted);
+  letter-spacing: 0.02em;
+}
+
+.ol-trust-badge svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ---- Free Shipping Progress Bar ---- */
+.ol-shipping-bar {
+  padding: 0.75rem 0;
+}
+
+.ol-shipping-bar__text {
+  font-size: 0.8125rem;
+  color: var(--ol-text);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.ol-shipping-bar__text strong {
+  font-weight: 600;
+}
+
+.ol-shipping-bar__track {
+  width: 100%;
+  height: 4px;
+  background: var(--ol-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ol-shipping-bar__fill {
+  height: 100%;
+  background: var(--ol-success);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  max-width: 100%;
+}
+
+.ol-shipping-bar--complete .ol-shipping-bar__text {
+  color: var(--ol-success);
+}
+
+/* ---- FAQ Accordion ---- */
+.ol-faq {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.ol-faq__item {
+  border-bottom: 1px solid var(--ol-border);
+}
+
+.ol-faq__question {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ol-text);
+  text-align: left;
+  line-height: 1.4;
+}
+
+.ol-faq__question:hover {
+  color: var(--ol-muted);
+}
+
+.ol-faq__icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.ol-faq__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.ol-faq__item[open] .ol-faq__icon {
+  transform: rotate(45deg);
+}
+
+.ol-faq__answer {
+  padding: 0 0 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ol-muted);
+}
+
+.ol-faq__answer p {
+  margin: 0;
+}
+
+/* ---- Social Proof / Testimonials ---- */
+.ol-testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.ol-testimonial {
+  padding: 2rem;
+  background: rgba(var(--ol-bg-rgb) / 0.6);
+  border: 1px solid var(--ol-border);
+}
+
+.ol-testimonial__stars {
+  color: var(--ol-accent);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.ol-testimonial__text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ol-text);
+  font-style: italic;
+  margin: 0 0 1rem;
+}
+
+.ol-testimonial__author {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ol-accent);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.ol-testimonial__meta {
+  font-size: 0.75rem;
+  color: var(--ol-muted);
+  margin: 0.25rem 0 0;
+}
+
+/* ---- Delivery Estimate (Product Page) ---- */
+.ol-delivery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  font-size: 0.8125rem;
+  color: var(--ol-muted);
+}
+
+.ol-delivery__row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ol-delivery__row svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ---- Utility: section spacing for custom sections ---- */
+.ol-section {
+  padding-block: 4rem;
+}
+
+.ol-section--sm {
+  padding-block: 2rem;
+}
+
+.ol-section__heading {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.ol-section__title {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+  color: var(--ol-text);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.ol-section__subtitle {
+  font-size: 0.9375rem;
+  color: var(--ol-muted);
+  margin: 0;
+  max-width: 36rem;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+/* ---- Bundle CTA Block ---- */
+.ol-bundle-cta {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--ol-trust-bg);
+  border: 1px solid var(--ol-border);
+}
+
+.ol-bundle-cta__title {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  color: var(--ol-text);
+  margin: 0 0 0.5rem;
+}
+
+.ol-bundle-cta__desc {
+  font-size: 0.9375rem;
+  color: var(--ol-muted);
+  margin: 0 0 1.5rem;
+  max-width: 28rem;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+.ol-bundle-cta__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---- Responsive ---- */
+@media screen and (max-width: 749px) {
+  .ol-value-props {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+
+  .ol-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .ol-section {
+    padding-block: 2.5rem;
+  }
+
+  .ol-bundle-cta {
+    padding: 2rem 1.25rem;
+  }
+}

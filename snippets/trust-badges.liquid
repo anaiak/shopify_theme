@@ -1,0 +1,25 @@
+{%- doc -%}
+  Trust badges row — inline SVG icons with text.
+  Render near the Add-to-Cart button for CRO.
+
+  @param {string} [class] - Additional CSS class.
+{%- enddoc -%}
+
+<div class="ol-trust-badges{% if class %} {{ class }}{% endif %}" aria-label="Trust & guarantees">
+  <span class="ol-trust-badge">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Secure payment
+  </span>
+  <span class="ol-trust-badge">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    Free shipping 50€+
+  </span>
+  <span class="ol-trust-badge">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+    30-day returns
+  </span>
+  <span class="ol-trust-badge">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    Museum-grade quality
+  </span>
+</div>
