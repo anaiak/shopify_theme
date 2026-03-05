@@ -1,6 +1,24 @@
 
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+{% liquid
+  assign localized_root = routes.root_url | default: '/'
+%}
+
+{% if localized_root != '/' %}
+  <script>
+    (function redirectRoot404ToLocalizedHome() {
+      const localizedRoot = {{ localized_root | json }};
+      const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+      const normalizedLocalizedRoot = localizedRoot.replace(/\/+$/, '') || '/';
+
+      if (currentPath === '/' && normalizedLocalizedRoot !== '/') {
+        window.location.replace(`${normalizedLocalizedRoot}${window.location.search}${window.location.hash}`);
+      }
+    })();
+  </script>
+{% endif %}
+
 <div
   class="
     section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}
